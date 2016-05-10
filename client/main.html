@@ -1,15 +1,3 @@
-<head>
-  <title>simple</title>
-</head>
-
-<body>
-  {{>navbar}}
-
-  {{>jumbotron}}
-
-  {{>footer}}
-</body>
-
 <template name="navbar">
   <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -58,8 +46,59 @@
     </div>
   </div>
 </template>
+
 <template name="footer">
   <footer class="bottom-page">
 
   </footer>
+</template>
+
+<template name="ApplicationLayout">
+  {{> Template.dynamic template=nav}}
+  {{> Template.dynamic template=main}}
+  {{> Template.dynamic template=footer}}
+</template>
+
+<template name="home">
+  {{> jumbotron}}
+</template>
+
+<template name="UserLayout">
+  {{> Template.dynamic template=nav}}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="list-group">
+          <a href="/resume"><button type="button" class="list-group-item" >Resume</button></a>
+          <a href="/video"><button type="button" class="list-group-item">Video</button></a>
+          <a href="/messages"><button type="button" class="list-group-item">Messages</button></a>
+          <a href="/favorites"><button type="button" class="list-group-item">Favorites</button></a>
+          <a href=""><button type="button" class="list-group-item">Log Out</button></a>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+          {{> Template.dynamic template=main}}
+      </div>
+
+    </div>
+  </div>
+  {{> Template.dynamic template=footer}}
+
+</template>
+
+<template name="resume">
+  Resume
+</template>
+
+<template name="video">
+  Video
+</template>
+
+<template name="messages">
+  Messages
+</template>
+
+<template name="favorites">
+  Favorites
 </template>
